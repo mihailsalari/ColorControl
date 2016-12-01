@@ -51,7 +51,6 @@ class MultipleColorControlViewController: UIViewController {
         super.viewDidLoad()
         
         ///
-       
         self.brightnessLabel.text = "Brightness \(brightnessUISlider.value)"
         self.contrastLabel.text = "Contrast \(contrastUISlider.value)"
         self.saturationLabel.text = "Saturation \(saturationUISlider.value)"
@@ -62,8 +61,8 @@ class MultipleColorControlViewController: UIViewController {
             }
         }
         
-        ///
         
+        ///
         let openGLContext = EAGLContext(api: .openGLES3)!
         ciImageContext = CIContext(eaglContext: openGLContext)
         colorControlsFilter = CIFilter(name: "CIColorControls")!
@@ -149,7 +148,6 @@ extension MultipleColorControlViewController {
         let contrastValue = self.colorControlsFilter.value(forKey: kCIInputContrastKey) as? Float
         let saturationValue = self.colorControlsFilter.value(forKey: kCIInputSaturationKey) as? Float
         
-        
         print((brightnessValue, contrastValue, saturationValue));
         
         contrastUISlider.value = contrastValue ?? 1.00
@@ -175,8 +173,7 @@ extension MultipleColorControlViewController {
     @IBAction func brightnessUISliderPressed(_ sender: UISlider) {
         if let indexPath = self.visibleCurrentCell {
             let cell = self.collectionView.cellForItem(at: indexPath) as! MultipleColorCell
-            
-            colorControlsFilter.setValue(sender.value, forKey: kCIInputBrightnessKey) // kCIInputBrightnessKey
+            colorControlsFilter.setValue(sender.value, forKey: kCIInputBrightnessKey)
             self.brightnessLabel.text = "Brightness \(sender.value)"
             
             if let outputImage = self.colorControlsFilter.outputImage {
@@ -188,10 +185,9 @@ extension MultipleColorControlViewController {
         }
     }
     
-    @IBAction func contrastUISliderPressed(_ sender: UISlider) { // kCIInputContrastKey
+    @IBAction func contrastUISliderPressed(_ sender: UISlider) {
         if let indexPath = self.visibleCurrentCell {
             let cell = self.collectionView.cellForItem(at: indexPath) as! MultipleColorCell
-            
             colorControlsFilter.setValue(sender.value, forKey: kCIInputContrastKey)
             self.contrastLabel.text = "Contrast \(sender.value)"
             
@@ -204,10 +200,9 @@ extension MultipleColorControlViewController {
         }
     }
     
-    @IBAction func saturationUISliderPressed(_ sender: UISlider) { // kCIInputSaturationKey
+    @IBAction func saturationUISliderPressed(_ sender: UISlider) {
         if let indexPath = self.visibleCurrentCell {
             let cell = self.collectionView.cellForItem(at: indexPath) as! MultipleColorCell
-            
             colorControlsFilter.setValue(sender.value, forKey: kCIInputSaturationKey)
             self.saturationLabel.text = "Saturation \(sender.value)"
             
@@ -228,22 +223,6 @@ extension MultipleColorControlViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         setDefaultValueOfSliders()
-        
-        
-        
-        
-        
-        
-        if let indexPath = self.visibleCurrentCell {
-            let cell = self.collectionView.cellForItem(at: indexPath) as! MultipleColorCell
-            if let image = cell.imageView.image {
-//                self.items.remove(at: indexPath.row)
-//                self.items.insert(image, at: indexPath.row)
-                
-                print(indexPath)
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
