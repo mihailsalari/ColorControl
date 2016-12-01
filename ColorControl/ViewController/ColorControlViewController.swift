@@ -20,6 +20,10 @@ class ColorControlViewController: UIViewController {
     @IBOutlet weak var contrastUISlider: UISlider!
     @IBOutlet weak var saturationUISlider: UISlider!
     
+    var colorControl = ColorControl()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +34,19 @@ class ColorControlViewController: UIViewController {
         self.contrastLabel.text = "Contrast \(contrastUISlider.value)"
         self.saturationLabel.text = "Saturation \(saturationUISlider.value)"
         
-        let colorControl = ColorControl()
-        brightnessUISlider.maximumValue = colorControl.maxBrightnessValue
-        brightnessUISlider.minimumValue = colorControl.minBrightnessValue
+        colorControl = colorControl.input(self.imageView.image!)
         
-        contrastUISlider.maximumValue = colorControl.maxBrightnessValue
-        contrastUISlider.minimumValue = colorControl.minBrightnessValue
+        contrastUISlider.value = 1.00
+        contrastUISlider.maximumValue = 4.00
+        contrastUISlider.minimumValue = 0.00
         
-        saturationUISlider.maximumValue = colorControl.maxBrightnessValue
-        saturationUISlider.minimumValue = colorControl.minBrightnessValue
+        brightnessUISlider.value = 0.00
+        brightnessUISlider.maximumValue = 1.00
+        brightnessUISlider.minimumValue = -1.00
         
-        //        brightnessUISlider.value = colorControl.currentBrightnessValue
-        //        contrastUISlider.value = colorControl.currentContrastValue
-        //        saturationUISlider.value = colorControl.currentSaturationValue
+        saturationUISlider.value = 1.00
+        saturationUISlider.maximumValue = 2.00
+        saturationUISlider.minimumValue = 0.00
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,26 +59,28 @@ class ColorControlViewController: UIViewController {
 extension ColorControlViewController {
     
     @IBAction func brightnessUISliderPressed(_ sender: UISlider) {
-        self.brightnessLabel.text = "Brightness \(sender.value)"
-        let colorControl = ColorControl()
-        let inputImage = colorControl.input(self.imageView.image!)
-        let saturation = inputImage.brightness(sender.value)
-        self.imageView.image = saturation.outputUIImage()
+        DispatchQueue.main.async {
+            self.brightnessLabel.text = "Brightness \(sender.value)"
+            self.colorControl = self.colorControl.brightness(sender.value)
+            self.imageView.image = self.colorControl.outputUIImage()
+        }
     }
     
     @IBAction func contrastUISliderPressed(_ sender: UISlider) {
-        self.contrastLabel.text = "Contrast \(sender.value)"
-        let colorControl = ColorControl()
-        let inputImage = colorControl.input(self.imageView.image!)
-        let saturation = inputImage.contrast(sender.value)
-        self.imageView.image = saturation.outputUIImage()
+        DispatchQueue.main.async {
+            self.contrastLabel.text = "Contrast \(sender.value)"
+            
+            self.colorControl = self.colorControl.contrast(sender.value)
+            self.imageView.image = self.colorControl.outputUIImage()
+        }
     }
     
     @IBAction func saturationUISliderPressed(_ sender: UISlider) {
-        self.saturationLabel.text = "Saturation \(sender.value)"
-        let colorControl = ColorControl()
-        let inputImage = colorControl.input(self.imageView.image!)
-        let saturation = inputImage.saturation(sender.value)
-        self.imageView.image = saturation.outputUIImage()
+        DispatchQueue.main.async {
+            self.saturationLabel.text = "Saturation \(sender.value)"
+            
+            self.colorControl = self.colorControl.saturation(sender.value)
+            self.imageView.image = self.colorControl.outputUIImage()
+        }
     }
 }

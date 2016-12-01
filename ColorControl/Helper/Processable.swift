@@ -28,12 +28,10 @@ protocol Processable {
 }
 
 extension Processable {
-    //    var filter: CIFilter {
-    //        return CIFilter(name: "CIColorControls")!
-    //    }
-    
+
     var attributes: [String: Any] {
         get {
+            self.filter.setDefaults()
             return self.filter.attributes as [String : Any]
         }
     }
@@ -43,6 +41,7 @@ extension Processable {
 extension Processable {
     
     func input(_ image: UIImage) -> Self {
+        self.filter.setDefaults()
         guard let ciImage = CIImage(image: image) else { return self }
         self.filter.setValue(ciImage, forKey: kCIInputImageKey)
         

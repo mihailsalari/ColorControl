@@ -32,7 +32,7 @@ extension Brightnessable {
     }
     
     func brightness(_ brightness: Float) -> Self {
-        ///self.filter.setValue(NSNumber.floatNumber(brightness, min: self.minBrightnessValue, max: self.maxBrightnessValue), forKey: kCIInputBrightnessKey)
+//        self.filter.setValue(NSNumber.floatNumber(brightness, min: self.minBrightnessValue, max: self.maxBrightnessValue), forKey: kCIInputBrightnessKey)
         self.filter.setValue(brightness, forKey: kCIInputBrightnessKey)
         
         return self
