@@ -10,5 +10,7 @@ import CoreImage
 
 final class ColorControl: Brightnessable, Contrastable, Saturationable {
     
+    // MARK: - Properties
+    
     let filter = CIFilter(name: "CIColorControls")!
 }

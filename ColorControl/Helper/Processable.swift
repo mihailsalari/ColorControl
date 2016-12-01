@@ -16,7 +16,7 @@ protocol Processable {
     var attributes: [String: Any] { get }
     
     func input(_ image: UIImage) -> Self
-    func composite(_ processable: Processable) -> Self // TODO: Rename
+    func composite(_ processable: Processable) -> Self
     func outputCIImage() -> CIImage
     func outputCGImage() -> CGImage
     func outputUIImage() -> UIImage
@@ -26,6 +26,7 @@ protocol Processable {
     func minValue(inputKey key: String) -> Int
     func maxValue(inputKey key: String) -> Int
 }
+
 
 extension Processable {
 
@@ -112,12 +113,10 @@ extension Processable {
     fileprivate func minNumber(inputKey key: String) -> NSNumber {
         let detailes = self.inputDetailes(key)
         if let min = detailes[kCIAttributeMin] as? NSNumber {
-            print("min value:\(min), forKey\(key)") // TODO: delete
             return min
         }
         
         if let min = detailes[kCIAttributeSliderMin] as? NSNumber {
-            print("min value:\(min), forKey\(key)") // TODO: delete
             return min
         }
         
@@ -127,12 +126,10 @@ extension Processable {
     fileprivate func maxNumber(inputKey key: String) -> NSNumber {
         let detailes = self.inputDetailes(key)
         if let max = detailes[kCIAttributeMax] as? NSNumber {
-            print("max value:\(max), forKey\(key)") // TODO: delete
             return max
         }
         
         if let max = detailes[kCIAttributeSliderMax] as? NSNumber {
-            print("max value:\(max), forKey\(key)") // TODO: delete
             return max
         }
         

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - NSNumber
+
 extension NSNumber {
     
     static func doubleNumber(_ double: Double, min: Double, max: Double) -> NSNumber {

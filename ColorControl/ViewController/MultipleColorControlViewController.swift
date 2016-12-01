@@ -55,12 +55,8 @@ class MultipleColorControlViewController: UIViewController {
         self.contrastLabel.text = "Contrast \(contrastUISlider.value)"
         self.saturationLabel.text = "Saturation \(saturationUISlider.value)"
         
-        for index in 0...7 {
-            if let image = UIImage(named: "\(index)") {
-                self.items.append(image)
-            }
-        }
-        
+        ///
+        self.fetchImages()
         
         ///
         let openGLContext = EAGLContext(api: .openGLES3)!
@@ -73,6 +69,14 @@ class MultipleColorControlViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func fetchImages() {
+        for index in 0...7 {
+            if let image = UIImage(named: "\(index)") {
+                self.items.append(image)
+            }
+        }
     }
 }
 
@@ -112,7 +116,6 @@ extension MultipleColorControlViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
 
 
 // MARK: UICollectionViewDelegate
@@ -161,7 +164,6 @@ extension MultipleColorControlViewController {
         saturationUISlider.value = saturationValue ?? 1.00
         saturationUISlider.maximumValue = 2.00
         saturationUISlider.minimumValue = 0.00
-        
     }
 }
 

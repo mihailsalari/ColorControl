@@ -34,6 +34,16 @@ class ColorControlViewController: UIViewController {
         
         colorControl = colorControl.input(self.imageView.image!)
         
+        ///
+        self.setUISLidersValues()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func setUISLidersValues() {
         contrastUISlider.value = 1.00
         contrastUISlider.maximumValue = 4.00
         contrastUISlider.minimumValue = 0.00
@@ -46,13 +56,10 @@ class ColorControlViewController: UIViewController {
         saturationUISlider.maximumValue = 2.00
         saturationUISlider.minimumValue = 0.00
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
+
+// MARK: - UISlider @IBAction
 
 extension ColorControlViewController {
     
