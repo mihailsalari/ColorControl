@@ -20,6 +20,8 @@
 		486004A21DEE258A000CF334 /* Contrastable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486004A11DEE258A000CF334 /* Contrastable.swift */; };
 		486004A41DEE2594000CF334 /* Foundation Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486004A31DEE2594000CF334 /* Foundation Extensions.swift */; };
 		486004A61DEE25E4000CF334 /* ColorControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486004A51DEE25E4000CF334 /* ColorControlManager.swift */; };
+		8B3267ED1DF03858003274E8 /* MultipleColorControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3267EC1DF03858003274E8 /* MultipleColorControlViewController.swift */; };
+		8B3267EF1DF03923003274E8 /* MultipleColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3267EE1DF03923003274E8 /* MultipleColorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		486004A11DEE258A000CF334 /* Contrastable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contrastable.swift; path = Helper/Contrastable.swift; sourceTree = "<group>"; };
 		486004A31DEE2594000CF334 /* Foundation Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Foundation Extensions.swift"; path = "Util/Foundation Extensions.swift"; sourceTree = "<group>"; };
 		486004A51DEE25E4000CF334 /* ColorControlManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorControlManager.swift; path = Helper/ColorControlManager.swift; sourceTree = "<group>"; };
+		8B3267EC1DF03858003274E8 /* MultipleColorControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleColorControlViewController.swift; path = ViewController/MultipleColorControlViewController.swift; sourceTree = "<group>"; };
+		8B3267EE1DF03923003274E8 /* MultipleColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleColorCell.swift; path = View/MultipleColorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				486004991DEE2546000CF334 /* ColorControlViewController.swift */,
+				8B3267EC1DF03858003274E8 /* MultipleColorControlViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 		486004951DEE2518000CF334 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B3267EE1DF03923003274E8 /* MultipleColorCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -343,8 +349,10 @@
 				486004A01DEE257F000CF334 /* Saturationable.swift in Sources */,
 				4860049C1DEE2566000CF334 /* Processable.swift in Sources */,
 				486004921DEE250E000CF334 /* AppDelegate.swift in Sources */,
+				8B3267ED1DF03858003274E8 /* MultipleColorControlViewController.swift in Sources */,
 				486004A21DEE258A000CF334 /* Contrastable.swift in Sources */,
 				486004A61DEE25E4000CF334 /* ColorControlManager.swift in Sources */,
+				8B3267EF1DF03923003274E8 /* MultipleColorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,9 +21,7 @@ class ColorControlViewController: UIViewController {
     @IBOutlet weak var saturationUISlider: UISlider!
     
     var colorControl = ColorControl()
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
