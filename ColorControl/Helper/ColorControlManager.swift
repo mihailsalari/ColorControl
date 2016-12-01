@@ -8,7 +8,7 @@
 
 import CoreImage
 
-final class ColorControl: Brightnessable, Contrastable, Saturationable {
+class ColorControl: Brightnessable, Contrastable, Saturationable {
     
     // MARK: - Properties
     

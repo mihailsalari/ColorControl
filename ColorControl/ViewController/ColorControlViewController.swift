@@ -10,6 +10,8 @@ import UIKit
 
 class ColorControlViewController: UIViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var brightnessLabel: UILabel!
@@ -20,8 +22,11 @@ class ColorControlViewController: UIViewController {
     @IBOutlet weak var contrastUISlider: UISlider!
     @IBOutlet weak var saturationUISlider: UISlider!
     
-    var colorControl = ColorControl()
+    fileprivate var colorControl = ColorControl()
 
+    
+    
+    // MARK: - LyfeCicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +37,7 @@ class ColorControlViewController: UIViewController {
         self.contrastLabel.text = "Contrast \(contrastUISlider.value)"
         self.saturationLabel.text = "Saturation \(saturationUISlider.value)"
         
-        colorControl = colorControl.input(self.imageView.image!)
+        colorControl.input(imageView.image!)
         
         ///
         self.setUISLidersValues()
@@ -44,17 +49,17 @@ class ColorControlViewController: UIViewController {
     }
     
     fileprivate func setUISLidersValues() {
-        contrastUISlider.value = 1.00
-        contrastUISlider.maximumValue = 4.00
-        contrastUISlider.minimumValue = 0.00
+        contrastUISlider.value = colorControl.currentContrastValue
+        contrastUISlider.maximumValue = colorControl.maxContrastValue
+        contrastUISlider.minimumValue = colorControl.minContrastValue
         
-        brightnessUISlider.value = 0.00
-        brightnessUISlider.maximumValue = 1.00
-        brightnessUISlider.minimumValue = -1.00
+        brightnessUISlider.value = colorControl.currentBrightnessValue
+        brightnessUISlider.maximumValue = colorControl.maxBrightnessValue
+        brightnessUISlider.minimumValue = colorControl.minBrightnessValue
         
-        saturationUISlider.value = 1.00
-        saturationUISlider.maximumValue = 2.00
-        saturationUISlider.minimumValue = 0.00
+        saturationUISlider.value = colorControl.currentSaturationValue
+        saturationUISlider.maximumValue = colorControl.maxSaturationValue
+        saturationUISlider.minimumValue = colorControl.minSaturationValue
     }
 }
 
@@ -66,7 +71,7 @@ extension ColorControlViewController {
     @IBAction func brightnessUISliderPressed(_ sender: UISlider) {
         DispatchQueue.main.async {
             self.brightnessLabel.text = "Brightness \(sender.value)"
-            self.colorControl = self.colorControl.brightness(sender.value)
+            self.colorControl.brightness(sender.value)
             self.imageView.image = self.colorControl.outputUIImage()
         }
     }
@@ -75,7 +80,7 @@ extension ColorControlViewController {
         DispatchQueue.main.async {
             self.contrastLabel.text = "Contrast \(sender.value)"
             
-            self.colorControl = self.colorControl.contrast(sender.value)
+            self.colorControl.contrast(sender.value)
             self.imageView.image = self.colorControl.outputUIImage()
         }
     }
@@ -84,7 +89,7 @@ extension ColorControlViewController {
         DispatchQueue.main.async {
             self.saturationLabel.text = "Saturation \(sender.value)"
             
-            self.colorControl = self.colorControl.saturation(sender.value)
+            self.colorControl.saturation(sender.value)
             self.imageView.image = self.colorControl.outputUIImage()
         }
     }

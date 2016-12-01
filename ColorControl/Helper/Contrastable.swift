@@ -6,34 +6,30 @@
 //  Copyright © 2016 Mihail Șalari. All rights reserved.
 //
 
-import Foundation
 import CoreImage
 
 protocol Contrastable: Processable {
     var minContrastValue: Float { get }
     var maxContrastValue: Float { get }
     var currentContrastValue: Float { get }
-    func contrast(_ contrast: Float) -> Self
+    func contrast(_ contrast: Float)
 }
 
 extension Contrastable {
     
     var minContrastValue: Float {
-        return self.minValue(inputKey: kCIInputContrastKey)
+        return 0.00
     }
     
     var maxContrastValue: Float {
-        return self.minValue(inputKey: kCIInputContrastKey)
+        return 4.00
     }
     
     var currentContrastValue: Float {
-        return filter.value(forKey: kCIInputContrastKey) as! Float
+        return filter.value(forKey: kCIInputContrastKey) as? Float ?? 1.00
     }
     
-    func contrast(_ contrast: Float) -> Self {
-        self.filter.setValue(NSNumber.floatNumber(contrast, min: self.minContrastValue, max: self.maxContrastValue), forKey: kCIInputContrastKey)
-//        self.filter.setValue(contrast, forKey: kCIInputContrastKey)
-        
-        return self
+    func contrast(_ contrast: Float) {
+        self.filter.setValue(contrast, forKey: kCIInputContrastKey)
     }
 }
