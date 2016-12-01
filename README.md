@@ -5,7 +5,7 @@ https://developer.apple.com/library/content/samplecode/FunHouse/Introduction/Int
 http://stackoverflow.com/questions/13928412/how-to-add-brightness-uislider-on-uiimagepickercontroller-camera
 ## Demo
 
-[![Demo Doccou alpha](https://github.com/mihailsalari/ColorControl/Screens/ColorControl.png)](https://www.youtube.com/watch?v=iI-She_vGhw)
+[![Demo Doccou alpha](https://github.com/mihailsalari/ColorControl/blob/master/ColorControl/Assets.xcassets/Screen.imageset/Screen.png)](https://www.youtube.com/watch?v=iI-She_vGhw)
 
 ## Support
 
