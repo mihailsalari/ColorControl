@@ -32,7 +32,8 @@ http://stackoverflow.com/questions/13928412/how-to-add-brightness-uislider-on-ui
 * CIContext
 * UISlider, UICollectionView
 
-
+### v1.0.2
+* Changed Protocols
 
 ## Bug Reports & Feature Requests
 
